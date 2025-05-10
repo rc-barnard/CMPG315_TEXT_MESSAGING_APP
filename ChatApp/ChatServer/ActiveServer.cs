@@ -94,7 +94,9 @@ namespace ChatServer
         {
             NetworkStream stream = client.GetStream();
             byte[] streamBuffer = new byte[1024];
-            int noOfPasswordBytes = stream.Read(streamBuffer, 0, streamBuffer.Length);
+
+
+            int noOfPasswordBytes = stream.Read(streamBuffer, 0, 12);
             string accessPassword = Encoding.ASCII.GetString(streamBuffer, 0, 12);
 
             if (noOfPasswordBytes != 0 & accessPassword == "CMPG@315PROJ")
@@ -130,22 +132,14 @@ namespace ChatServer
                         if (NoBytesToRead == 0) return;
                         string message = Encoding.UTF8.GetString(streamBuffer, 0, NoBytesToRead);
 
-                        if (message == "ping")
-                        {
-                            continue;
-                        }
-
                         if (message.ToLower() == "xxx") //If client want to exit the server.
                         {
-                            string exitMessage = "Client with username " + username + " exiting the Chat Server...";
-                            addToListBox(exitMessage);
-                            byte[] exitMessageBuffer = Encoding.UTF8.GetBytes(exitMessage);
-                            stream.Write(exitMessageBuffer, 0, exitMessageBuffer.Length);
+                            message = "Note: " + username + " left the Chat...";
+
                             lock (appClients) //To ensure multiple actions on appClients.
                             {
                                 appClients.Remove(username);
                             }
-                            break;
                         }
 
                         if (message.StartsWith("@")) //If direct message, example: @Bob: Hello Bob!
@@ -181,7 +175,15 @@ namespace ChatServer
                         else
                         {
                             messageToSend = message;
-                            byte[] messageBufferToSend = Encoding.UTF8.GetBytes(username + ": " + message); //Convert the message to a byte array.
+                            byte[] messageBufferToSend = null;
+                            if (message.StartsWith("Note:"))
+                            {
+                                messageBufferToSend = Encoding.UTF8.GetBytes(message); //Convert the message to a byte array.
+                            }
+                            else
+                            {
+                                messageBufferToSend = Encoding.UTF8.GetBytes(username + ": " + message); //Convert the message to a byte array.
+                            }
 
                             lock (appClients) //To ensure multiple actions on appClients.
                             {
@@ -207,11 +209,27 @@ namespace ChatServer
                                         }
                                     }
                                 }
-                                addToListBox("Message sent successfully from " + username + " to all connected users...");
+
+                                if (message.StartsWith("Note:"))
+                                {
+
+                                }
+                                else
+                                {
+                                    addToListBox("Message sent successfully from " + username + " to all connected users...");
+                                }
                             }
                         }
-                        //Display the message received from the client.
-                        addToListBox("Message '" + messageToSend + "' received from " + username);
+
+                        if (message.StartsWith("Note:"))
+                        {
+
+                        }
+                        else
+                        {
+                            //Display the message received from the client.
+                            addToListBox("Message '" + messageToSend + "' received from " + username);
+                        }
                     }
                 }
                 catch (Exception error)
@@ -250,8 +268,8 @@ namespace ChatServer
             else
             {
                 addToListBox("Client authentication failed: " + client.Client.RemoteEndPoint.ToString());
-                stream.WriteByte(0);
-                client.Close();
+                try { stream.Close(); } catch { }
+                try { client.Close(); } catch { }
                 return;
             }
         }

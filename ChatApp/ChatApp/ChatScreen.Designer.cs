@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatScreen));
             this.IsDirectMessage = new System.Windows.Forms.CheckBox();
             this.lblRecipient = new System.Windows.Forms.Label();
             this.txtRecipient = new System.Windows.Forms.TextBox();
@@ -40,13 +39,15 @@
             this.btnSendMessage = new System.Windows.Forms.Button();
             this.btnExitChat = new System.Windows.Forms.Button();
             this.dateTimer = new System.Windows.Forms.Timer(this.components);
+            this.aliveTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // IsDirectMessage
             // 
             this.IsDirectMessage.AutoSize = true;
             this.IsDirectMessage.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IsDirectMessage.Location = new System.Drawing.Point(12, 12);
+            this.IsDirectMessage.Location = new System.Drawing.Point(9, 10);
+            this.IsDirectMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.IsDirectMessage.Name = "IsDirectMessage";
             this.IsDirectMessage.Size = new System.Drawing.Size(137, 21);
             this.IsDirectMessage.TabIndex = 0;
@@ -58,7 +59,8 @@
             // 
             this.lblRecipient.AutoSize = true;
             this.lblRecipient.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecipient.Location = new System.Drawing.Point(12, 42);
+            this.lblRecipient.Location = new System.Drawing.Point(9, 34);
+            this.lblRecipient.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecipient.Name = "lblRecipient";
             this.lblRecipient.Size = new System.Drawing.Size(83, 17);
             this.lblRecipient.TabIndex = 1;
@@ -67,9 +69,10 @@
             // 
             // txtRecipient
             // 
-            this.txtRecipient.Location = new System.Drawing.Point(15, 62);
+            this.txtRecipient.Location = new System.Drawing.Point(11, 50);
+            this.txtRecipient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtRecipient.Name = "txtRecipient";
-            this.txtRecipient.Size = new System.Drawing.Size(110, 22);
+            this.txtRecipient.Size = new System.Drawing.Size(84, 20);
             this.txtRecipient.TabIndex = 2;
             this.txtRecipient.Visible = false;
             // 
@@ -77,7 +80,8 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(389, 14);
+            this.lblDate.Location = new System.Drawing.Point(292, 11);
+            this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(41, 16);
             this.lblDate.TabIndex = 3;
@@ -88,17 +92,18 @@
             this.lstChat.BackColor = System.Drawing.SystemColors.Info;
             this.lstChat.FormattingEnabled = true;
             this.lstChat.HorizontalScrollbar = true;
-            this.lstChat.ItemHeight = 16;
-            this.lstChat.Location = new System.Drawing.Point(248, 40);
+            this.lstChat.Location = new System.Drawing.Point(186, 32);
+            this.lstChat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lstChat.Name = "lstChat";
-            this.lstChat.Size = new System.Drawing.Size(398, 324);
+            this.lstChat.Size = new System.Drawing.Size(300, 264);
             this.lstChat.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 131);
+            this.label3.Location = new System.Drawing.Point(7, 106);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 17);
             this.label3.TabIndex = 5;
@@ -106,10 +111,11 @@
             // 
             // txtMessage
             // 
-            this.txtMessage.Location = new System.Drawing.Point(12, 152);
+            this.txtMessage.Location = new System.Drawing.Point(9, 124);
+            this.txtMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(199, 107);
+            this.txtMessage.Size = new System.Drawing.Size(150, 88);
             this.txtMessage.TabIndex = 6;
             // 
             // btnSendMessage
@@ -117,9 +123,10 @@
             this.btnSendMessage.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnSendMessage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSendMessage.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendMessage.Location = new System.Drawing.Point(32, 277);
+            this.btnSendMessage.Location = new System.Drawing.Point(24, 225);
+            this.btnSendMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSendMessage.Name = "btnSendMessage";
-            this.btnSendMessage.Size = new System.Drawing.Size(159, 35);
+            this.btnSendMessage.Size = new System.Drawing.Size(119, 28);
             this.btnSendMessage.TabIndex = 7;
             this.btnSendMessage.Text = "Send Message";
             this.btnSendMessage.UseVisualStyleBackColor = false;
@@ -130,9 +137,10 @@
             this.btnExitChat.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnExitChat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExitChat.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExitChat.Location = new System.Drawing.Point(32, 319);
+            this.btnExitChat.Location = new System.Drawing.Point(24, 259);
+            this.btnExitChat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExitChat.Name = "btnExitChat";
-            this.btnExitChat.Size = new System.Drawing.Size(159, 35);
+            this.btnExitChat.Size = new System.Drawing.Size(119, 28);
             this.btnExitChat.TabIndex = 8;
             this.btnExitChat.Text = "Exit Message";
             this.btnExitChat.UseVisualStyleBackColor = false;
@@ -144,12 +152,18 @@
             this.dateTimer.Interval = 1000;
             this.dateTimer.Tick += new System.EventHandler(this.dateTimer_Tick);
             // 
+            // aliveTimer
+            // 
+            this.aliveTimer.Enabled = true;
+            this.aliveTimer.Interval = 30000;
+            this.aliveTimer.Tick += new System.EventHandler(this.aliveTimer_Tick);
+            // 
             // ChatScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(658, 376);
+            this.ClientSize = new System.Drawing.Size(494, 306);
             this.Controls.Add(this.btnExitChat);
             this.Controls.Add(this.btnSendMessage);
             this.Controls.Add(this.txtMessage);
@@ -159,7 +173,7 @@
             this.Controls.Add(this.txtRecipient);
             this.Controls.Add(this.lblRecipient);
             this.Controls.Add(this.IsDirectMessage);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ChatScreen";
             this.Text = "Chat Screen";
             this.Load += new System.EventHandler(this.ChatScreen_Load);
@@ -180,5 +194,6 @@
         private System.Windows.Forms.Button btnSendMessage;
         private System.Windows.Forms.Button btnExitChat;
         private System.Windows.Forms.Timer dateTimer;
+        private System.Windows.Forms.Timer aliveTimer;
     }
 }

@@ -86,7 +86,7 @@ namespace ChatApp
 
         private async void btnEnterChat_Click(object sender, EventArgs e)
         {
-            await authenticateClientWithServer("28.ip.gl.ply.gg", 19073);
+            await authenticateClientWithServer("28.ip.gl.ply.gg", 20931);
         }
     }
 }
