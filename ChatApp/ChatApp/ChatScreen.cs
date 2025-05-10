@@ -38,7 +38,7 @@ namespace ChatApp
 
         private void dateTimer_Tick(object sender, EventArgs e)
         {
-            lblDate.Text = "Date: " + DateTime.Now.ToString("ddd-MM/yyyy") + ", " + DateTime.Now.ToString("HH:mm:ss");
+            lblDate.Text = "Date: " + DateTime.Now.ToString("ddd-MM/yyyy").ToUpper() + ", " + DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void IsDirectMessage_CheckedChanged(object sender, EventArgs e)
@@ -114,7 +114,7 @@ namespace ChatApp
                         byte[] messageBufferToSend = Encoding.UTF8.GetBytes(messageToSend);
                         stream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
                         lstChat.Items.Add("");
-                        lstChat.Items.Add("YOU TO: " + txtRecipient.Text.ToUpper() + ": " + rawMessageToSend);
+                        lstChat.Items.Add("YOU TO " + txtRecipient.Text.ToUpper() + ": " + rawMessageToSend);
                         txtRecipient.Clear();
                         IsDirectMessage.Checked = false;
                         txtMessage.Clear();
