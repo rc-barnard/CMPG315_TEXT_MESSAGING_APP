@@ -47,7 +47,7 @@
             this.IsDirectMessage.AutoSize = true;
             this.IsDirectMessage.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsDirectMessage.Location = new System.Drawing.Point(9, 10);
-            this.IsDirectMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.IsDirectMessage.Margin = new System.Windows.Forms.Padding(2);
             this.IsDirectMessage.Name = "IsDirectMessage";
             this.IsDirectMessage.Size = new System.Drawing.Size(137, 21);
             this.IsDirectMessage.TabIndex = 0;
@@ -70,7 +70,7 @@
             // txtRecipient
             // 
             this.txtRecipient.Location = new System.Drawing.Point(11, 50);
-            this.txtRecipient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtRecipient.Margin = new System.Windows.Forms.Padding(2);
             this.txtRecipient.Name = "txtRecipient";
             this.txtRecipient.Size = new System.Drawing.Size(84, 20);
             this.txtRecipient.TabIndex = 2;
@@ -90,12 +90,14 @@
             // lstChat
             // 
             this.lstChat.BackColor = System.Drawing.SystemColors.Info;
+            this.lstChat.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstChat.FormattingEnabled = true;
             this.lstChat.HorizontalScrollbar = true;
+            this.lstChat.ItemHeight = 15;
             this.lstChat.Location = new System.Drawing.Point(186, 32);
-            this.lstChat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstChat.Margin = new System.Windows.Forms.Padding(2);
             this.lstChat.Name = "lstChat";
-            this.lstChat.Size = new System.Drawing.Size(300, 264);
+            this.lstChat.Size = new System.Drawing.Size(300, 259);
             this.lstChat.TabIndex = 4;
             // 
             // label3
@@ -112,7 +114,7 @@
             // txtMessage
             // 
             this.txtMessage.Location = new System.Drawing.Point(9, 124);
-            this.txtMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMessage.Margin = new System.Windows.Forms.Padding(2);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.Size = new System.Drawing.Size(150, 88);
@@ -124,7 +126,7 @@
             this.btnSendMessage.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSendMessage.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSendMessage.Location = new System.Drawing.Point(24, 225);
-            this.btnSendMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSendMessage.Margin = new System.Windows.Forms.Padding(2);
             this.btnSendMessage.Name = "btnSendMessage";
             this.btnSendMessage.Size = new System.Drawing.Size(119, 28);
             this.btnSendMessage.TabIndex = 7;
@@ -138,7 +140,7 @@
             this.btnExitChat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExitChat.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExitChat.Location = new System.Drawing.Point(24, 259);
-            this.btnExitChat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExitChat.Margin = new System.Windows.Forms.Padding(2);
             this.btnExitChat.Name = "btnExitChat";
             this.btnExitChat.Size = new System.Drawing.Size(119, 28);
             this.btnExitChat.TabIndex = 8;
@@ -173,7 +175,7 @@
             this.Controls.Add(this.txtRecipient);
             this.Controls.Add(this.lblRecipient);
             this.Controls.Add(this.IsDirectMessage);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ChatScreen";
             this.Text = "Chat Screen";
             this.Load += new System.EventHandler(this.ChatScreen_Load);

@@ -79,8 +79,16 @@ namespace ChatApp
                     }
 
                     string messageReceived = Encoding.UTF8.GetString(incommingMessageBuffer, 0, noBytesToRead);
-                    this.Invoke((MethodInvoker)delegate { lstChat.Items.Add(""); });
-                    this.Invoke((MethodInvoker)delegate { lstChat.Items.Add(messageReceived); });
+                    if (messageReceived.ToLower().EndsWith("xping"))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        this.Invoke((MethodInvoker)delegate { lstChat.Items.Add(""); });
+                        this.Invoke((MethodInvoker)delegate { lstChat.Items.Add(messageReceived); });
+                    }
+
                 }
                 catch (Exception)
                 {
@@ -106,7 +114,7 @@ namespace ChatApp
                         byte[] messageBufferToSend = Encoding.UTF8.GetBytes(messageToSend);
                         stream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
                         lstChat.Items.Add("");
-                        lstChat.Items.Add("\tYou to " + txtRecipient.Text + ": " + rawMessageToSend);
+                        lstChat.Items.Add("YOU TO: " + txtRecipient.Text.ToUpper() + ": " + rawMessageToSend);
                         txtRecipient.Clear();
                         IsDirectMessage.Checked = false;
                         txtMessage.Clear();
@@ -120,7 +128,7 @@ namespace ChatApp
                 {
                     string messageToSend = txtMessage.Text;
                     lstChat.Items.Add("");
-                    lstChat.Items.Add("\tYou: " + messageToSend);
+                    lstChat.Items.Add("YOU: " + messageToSend);
                     byte[] messageBufferToSend = Encoding.UTF8.GetBytes(messageToSend);
                     stream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
                     txtMessage.Clear();
@@ -148,7 +156,7 @@ namespace ChatApp
         {
             try
             {
-                byte[] ping = Encoding.UTF8.GetBytes("ping");
+                byte[] ping = Encoding.UTF8.GetBytes("xping");
                 stream.Write(ping, 0, ping.Length);
             }
             catch
