@@ -68,7 +68,7 @@ namespace ChatServer
             chatServer.Stop();
         }
 
-        public void BroadcastSystemMessage(string message)
+        public void userJoinedMessage(string message)
         {
             byte[] messageBufferToSend = Encoding.UTF8.GetBytes("SYSTEM: " + message);
 
@@ -118,7 +118,7 @@ namespace ChatServer
                 addToListBox("Client with IP: " + client.Client.RemoteEndPoint.ToString() + " registered successfully with username " + username);
 
                 //Broadcast that a new user has joined
-                BroadcastSystemMessage(username + " has joined the chat...");
+                userJoinedMessage(username + " has joined the chat...");
 
                 try
                 {
@@ -140,7 +140,7 @@ namespace ChatServer
                             byte[] exitMessageBuffer = Encoding.UTF8.GetBytes(exitMessage);
                             stream.Write(exitMessageBuffer, 0, exitMessageBuffer.Length);
                             message = "System note: " + username + " left the Chat...";
-                            message = "Note: " + username + " left the Chat...";
+                            message = "SYSTEM: " + username + " left the Chat...";
 
                             lock (appClients) //To ensure multiple actions on appClients.
                             {
