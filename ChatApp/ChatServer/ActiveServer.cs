@@ -39,11 +39,11 @@ namespace ChatServer
             }
         }
 
-        public void mainSeverOperations(int portNumber)
+        public void mainSeverOperations(int PORTNUMBER)
         {
-            chatServer = new TcpListener(IPAddress.Any, portNumber);
+            chatServer = new TcpListener(IPAddress.Any, PORTNUMBER);
             chatServer.Start();
-            addToListBox("Chat Server started on port: " + portNumber);
+            addToListBox("Chat Server started on port: " + PORTNUMBER);
             while (isRunning)
             {
                 if (!chatServer.Pending())
