@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net.Sockets; //To access ports & IPAddresses
 using System.Threading; //Using Threads to ensure that multiple actions is allowed, like receivng multiple messages.
 
+//textapp
 namespace TextMessagingApp
 {
     public partial class Form1 : Form

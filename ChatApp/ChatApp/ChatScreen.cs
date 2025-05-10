@@ -79,8 +79,16 @@ namespace ChatApp
                     }
 
                     string messageReceived = Encoding.UTF8.GetString(incommingMessageBuffer, 0, noBytesToRead);
-                    this.Invoke((MethodInvoker)delegate { lstChat.Items.Add(""); });
-                    this.Invoke((MethodInvoker)delegate { lstChat.Items.Add(messageReceived); });
+                    if (messageReceived.ToLower().EndsWith("xping"))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        this.Invoke((MethodInvoker)delegate { lstChat.Items.Add(""); });
+                        this.Invoke((MethodInvoker)delegate { lstChat.Items.Add(messageReceived); });
+                    }
+
                 }
                 catch (Exception)
                 {
@@ -97,41 +105,33 @@ namespace ChatApp
         {
             if (txtMessage.Text.Length != 0)
             {
-                if (pingServer())
+                if (IsDirectMessage.Checked)
                 {
-                    if (IsDirectMessage.Checked)
+                    if (txtRecipient.Text.Length != 0)
                     {
-                        if (txtRecipient.Text.Length != 0)
-                        {
-                            string rawMessageToSend = txtMessage.Text.Trim();
-                            string messageToSend = "@" + txtRecipient.Text.ToUpper() + ":" + rawMessageToSend;
-                            byte[] messageBufferToSend = Encoding.UTF8.GetBytes(messageToSend);
-                            stream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
-                            lstChat.Items.Add("");
-                            lstChat.Items.Add("You to " + txtRecipient.Text + ": " + rawMessageToSend);
-                            txtRecipient.Clear();
-                            IsDirectMessage.Checked = false;
-                            txtMessage.Clear();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Please enter a recipient to send the message to!");
-                        }
+                        string rawMessageToSend = txtMessage.Text.Trim();
+                        string messageToSend = "@" + txtRecipient.Text.ToUpper() + ":" + rawMessageToSend;
+                        byte[] messageBufferToSend = Encoding.UTF8.GetBytes(messageToSend);
+                        stream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
+                        lstChat.Items.Add("");
+                        lstChat.Items.Add("YOU TO: " + txtRecipient.Text.ToUpper() + ": " + rawMessageToSend);
+                        txtRecipient.Clear();
+                        IsDirectMessage.Checked = false;
+                        txtMessage.Clear();
                     }
                     else
                     {
-                        string messageToSend = txtMessage.Text;
-                        lstChat.Items.Add("");
-                        lstChat.Items.Add("You: " + messageToSend);
-                        byte[] messageBufferToSend = Encoding.UTF8.GetBytes(messageToSend);
-                        stream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
-                        txtMessage.Clear();
+                        MessageBox.Show("Please enter a recipient to send the message to!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Server is not running! Exiting chat...");
-                    Environment.Exit(0);
+                    string messageToSend = txtMessage.Text;
+                    lstChat.Items.Add("");
+                    lstChat.Items.Add("YOU: " + messageToSend);
+                    byte[] messageBufferToSend = Encoding.UTF8.GetBytes(messageToSend);
+                    stream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
+                    txtMessage.Clear();
                 }
             }
             else
@@ -140,45 +140,29 @@ namespace ChatApp
             }
         }
 
-        public bool pingServer()
-        {
-            try
-            {
-                byte[] pingCheck = Encoding.UTF8.GetBytes("ping");
-                stream.Write(pingCheck, 0, pingCheck.Length);
-                return true;
-
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public bool serverActive()
-        {
-            try
-            {
-                return client != null && client.Connected;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         private void btnExitChat_Click(object sender, EventArgs e)
         {
             isClosing = true;
-            if (serverActive())
-            {
-                string messageToSend = "xxx";
-                byte[] messageBufferToSend = Encoding.UTF8.GetBytes(messageToSend);
-                stream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
-                stream.Close();
-                client.Close();
-            }
+            string messageToSend = "xxx";
+            byte[] messageBufferToSend = Encoding.UTF8.GetBytes(messageToSend);
+            stream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
+            stream.Close();
+            client.Close();
+            
             Environment.Exit(0);
+        }
+
+        private void aliveTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                byte[] ping = Encoding.UTF8.GetBytes("xping");
+                stream.Write(ping, 0, ping.Length);
+            }
+            catch
+            {
+
+            }
         }
     }
 }

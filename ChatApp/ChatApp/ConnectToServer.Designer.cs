@@ -40,9 +40,10 @@
             // 
             this.btnContinueToChat.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnContinueToChat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnContinueToChat.Location = new System.Drawing.Point(142, 64);
+            this.btnContinueToChat.Location = new System.Drawing.Point(106, 52);
+            this.btnContinueToChat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnContinueToChat.Name = "btnContinueToChat";
-            this.btnContinueToChat.Size = new System.Drawing.Size(131, 47);
+            this.btnContinueToChat.Size = new System.Drawing.Size(98, 38);
             this.btnContinueToChat.TabIndex = 0;
             this.btnContinueToChat.Text = "Continue to Chat";
             this.btnContinueToChat.UseVisualStyleBackColor = false;
@@ -50,16 +51,18 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(250, 27);
+            this.txtUsername.Location = new System.Drawing.Point(188, 22);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(162, 22);
+            this.txtUsername.Size = new System.Drawing.Size(122, 20);
             this.txtUsername.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(9, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(167, 20);
             this.label1.TabIndex = 0;
@@ -69,7 +72,8 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 29);
+            this.label3.Location = new System.Drawing.Point(9, 24);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(162, 20);
             this.label3.TabIndex = 1;
@@ -77,17 +81,19 @@
             // 
             // ConnectToServer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(442, 126);
+            this.ClientSize = new System.Drawing.Size(332, 102);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnContinueToChat);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ConnectToServer";
             this.Text = "Connect To Server";
+            this.Load += new System.EventHandler(this.ConnectToServer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
