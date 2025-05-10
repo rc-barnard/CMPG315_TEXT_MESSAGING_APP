@@ -15,7 +15,7 @@ namespace ChatServer
 {
     public partial class ActiveServer : Form
     {
-        private static int portNumber = 3258;
+        private static int PORTNUMBER = 3258; //constant
         private static Dictionary<string, TcpClient> appClients = new Dictionary<string, TcpClient>();
         private static TcpListener chatServer = null;
         private volatile bool isRunning = true;
@@ -68,6 +68,28 @@ namespace ChatServer
             chatServer.Stop();
         }
 
+        public void BroadcastSystemMessage(string message)
+        {
+            byte[] messageBufferToSend = Encoding.UTF8.GetBytes("SYSTEM: " + message);
+
+            lock (appClients)
+            {
+                foreach (var client in appClients.Values)
+                {
+                    try
+                    {
+                        NetworkStream messageStream = client.GetStream();
+                        messageStream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
+                    }
+                    catch (Exception error)
+                    {
+                        addToListBox("Error broadcasting system message: " + error.Message);
+                    }
+                }
+            }
+            addToListBox("System broadcast: " + message);
+        }
+
         public void manageClient(TcpClient client)
         {
             NetworkStream stream = client.GetStream();
@@ -92,6 +114,9 @@ namespace ChatServer
                     appClients[username] = client;
                 }
                 addToListBox("Client with IP: " + client.Client.RemoteEndPoint.ToString() + " registered successfully with username " + username);
+                
+                //Broadcast that a new user has joined
+                BroadcastSystemMessage(username + " has joined the chat");
 
                 try
                 {
