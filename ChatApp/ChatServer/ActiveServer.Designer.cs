@@ -38,10 +38,10 @@
             this.lstServerActivity.BackColor = System.Drawing.SystemColors.Info;
             this.lstServerActivity.FormattingEnabled = true;
             this.lstServerActivity.HorizontalScrollbar = true;
-            this.lstServerActivity.ItemHeight = 16;
-            this.lstServerActivity.Location = new System.Drawing.Point(12, 12);
+            this.lstServerActivity.Location = new System.Drawing.Point(9, 10);
+            this.lstServerActivity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lstServerActivity.Name = "lstServerActivity";
-            this.lstServerActivity.Size = new System.Drawing.Size(689, 308);
+            this.lstServerActivity.Size = new System.Drawing.Size(518, 251);
             this.lstServerActivity.TabIndex = 0;
             // 
             // btnStopServer
@@ -49,9 +49,10 @@
             this.btnStopServer.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnStopServer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStopServer.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStopServer.Location = new System.Drawing.Point(258, 333);
+            this.btnStopServer.Location = new System.Drawing.Point(194, 271);
+            this.btnStopServer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnStopServer.Name = "btnStopServer";
-            this.btnStopServer.Size = new System.Drawing.Size(186, 50);
+            this.btnStopServer.Size = new System.Drawing.Size(140, 41);
             this.btnStopServer.TabIndex = 1;
             this.btnStopServer.Text = "Stop Server";
             this.btnStopServer.UseVisualStyleBackColor = false;
@@ -59,13 +60,14 @@
             // 
             // ActiveServer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(713, 395);
+            this.ClientSize = new System.Drawing.Size(535, 321);
             this.Controls.Add(this.btnStopServer);
             this.Controls.Add(this.lstServerActivity);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ActiveServer";
             this.Text = "Active Server View";
             this.Load += new System.EventHandler(this.ActiveServer_Load);

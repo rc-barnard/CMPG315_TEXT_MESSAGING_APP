@@ -46,5 +46,10 @@ namespace ChatApp
                 MessageBox.Show("Please enter a username with 14 characters max!");
             }
         }
+
+        private void ConnectToServer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
