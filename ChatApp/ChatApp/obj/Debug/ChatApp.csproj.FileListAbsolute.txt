@@ -1,0 +1,16 @@
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\bin\Debug\ChatApp.exe.config
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\bin\Debug\ChatApp.exe
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\bin\Debug\ChatApp.pdb
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.csproj.AssemblyReference.cache
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.Form1.resources
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.Properties.Resources.resources
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.csproj.GenerateResource.cache
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.csproj.CoreCompileInputs.cache
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.exe
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.pdb
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.ConnectToServer.resources
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.ChatScreen.resources
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\bin\Debug\ChatApp.exe.manifest
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\bin\Debug\ChatApp.application
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.exe.manifest
+C:\Users\ruanb\OneDrive\Desktop\Bsc_IT\YEAR 2025\SEMESTER_1\5_CMPG315_COMPUTER_NETWORKS\CMPG315_TEXT_MESSAGING_APP\ChatApp\ChatApp\obj\Debug\ChatApp.application
