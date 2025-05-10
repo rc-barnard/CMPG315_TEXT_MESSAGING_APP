@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Net;
 using System.Net.Sockets;
-
+//test
 namespace ChatServer
 {
     public partial class ActiveServer : Form
@@ -87,7 +87,7 @@ namespace ChatServer
                     }
                 }
             }
-            addToListBox("System broadcast: " + message);
+            addToListBox("System note: " + message);
         }
 
         public void manageClient(TcpClient client)
@@ -114,9 +114,9 @@ namespace ChatServer
                     appClients[username] = client;
                 }
                 addToListBox("Client with IP: " + client.Client.RemoteEndPoint.ToString() + " registered successfully with username " + username);
-                
+
                 //Broadcast that a new user has joined
-                BroadcastSystemMessage(username + " has joined the chat");
+                BroadcastSystemMessage(username + " has joined the chat...");
 
                 try
                 {
@@ -137,10 +137,15 @@ namespace ChatServer
 
                         if (message.ToLower() == "xxx") //If client want to exit the server.
                         {
+<<<<<<< Updated upstream
                             string exitMessage = "Client with username " + username + " exiting the Chat Server...";
                             addToListBox(exitMessage);
                             byte[] exitMessageBuffer = Encoding.UTF8.GetBytes(exitMessage);
                             stream.Write(exitMessageBuffer, 0, exitMessageBuffer.Length);
+=======
+                            message = "System note: " + username + " left the Chat...";
+
+>>>>>>> Stashed changes
                             lock (appClients) //To ensure multiple actions on appClients.
                             {
                                 appClients.Remove(username);
