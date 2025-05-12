@@ -10,13 +10,13 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Net;
 using System.Net.Sockets;
-//test
+
 namespace ChatServer
 {
     public partial class ActiveServer : Form
     {
         private static int PORTNUMBER = 3258; //constant
-        private static Dictionary<string, TcpClient> appClients = new Dictionary<string, TcpClient>();
+        private static Dictionary<string, TcpClient> appClients = new Dictionary<string, TcpClient>(); //store clients in a dictionary
         private static TcpListener chatServer = null;
         private volatile bool isRunning = true;
 
@@ -25,7 +25,7 @@ namespace ChatServer
             InitializeComponent();
         }
 
-        public void addToListBox(string message)
+        public void addToListBox(string message)//update listbox when a new message is received
         {
             if (lstServerActivity.InvokeRequired)
             {
@@ -41,21 +41,21 @@ namespace ChatServer
 
         public void mainSeverOperations(int PORTNUMBER)
         {
-            chatServer = new TcpListener(IPAddress.Any, PORTNUMBER);
-            chatServer.Start();
+            chatServer = new TcpListener(IPAddress.Any, PORTNUMBER);//create TCP object that listens on specified port and any ip address
+            chatServer.Start();//start server
             addToListBox("Chat Server started on port: " + PORTNUMBER);
             while (isRunning)
             {
                 if (!chatServer.Pending())
                 {
-                    Thread.Sleep(1000); // Sleep for 1 second if no client is pending.
+                    Thread.Sleep(1000); // Sleep for 1 second if no client is pending to save cpu resources.
                     continue; // Continue to check for new clients.
                 }
 
                 try
                 {
-                    TcpClient client = chatServer.AcceptTcpClient();
-                    addToListBox("Unknown client connected: " + client.Client.RemoteEndPoint.ToString());
+                    TcpClient client = chatServer.AcceptTcpClient();//accept connection
+                    addToListBox("Unknown client connected: " + client.Client.RemoteEndPoint.ToString());//show client connected
                     Thread clientThread = new Thread(() => manageClient(client));
                     clientThread.Start();
                 }
@@ -68,17 +68,17 @@ namespace ChatServer
             chatServer.Stop();
         }
 
-        public void BroadcastSystemMessage(string message)
+        public void serverMessage(string message)
         {
             byte[] messageBufferToSend = Encoding.UTF8.GetBytes("SYSTEM: " + message);
 
-            lock (appClients)
+            lock (appClients)//ensure thread safety 
             {
-                foreach (var client in appClients.Values)
+                foreach (var client in appClients.Values)//iterate through clients in dictionary
                 {
                     try
                     {
-                        NetworkStream messageStream = client.GetStream();
+                        NetworkStream messageStream = client.GetStream();//get all the clients connection information
                         messageStream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
                     }
                     catch (Exception error)
@@ -87,19 +87,19 @@ namespace ChatServer
                     }
                 }
             }
-            addToListBox("System note: " + message);
+            addToListBox("System note: " + message);//notify the server operator of changes
         }
 
         public void manageClient(TcpClient client)
         {
-            NetworkStream stream = client.GetStream();
-            byte[] streamBuffer = new byte[1024];
+            NetworkStream stream = client.GetStream();//get client networkstream to read/write data
+            byte[] streamBuffer = new byte[1024];//create message buffer
 
 
-            int noOfPasswordBytes = stream.Read(streamBuffer, 0, 12);
+            int noOfPasswordBytes = stream.Read(streamBuffer, 0, 12);//set password buffer(12 bytes)
             string accessPassword = Encoding.ASCII.GetString(streamBuffer, 0, 12);
 
-            if (noOfPasswordBytes != 0 & accessPassword == "CMPG@315PROJ")
+            if (noOfPasswordBytes != 0 & accessPassword == "CMPG@315PROJ")//authenticate password
             {
                 addToListBox("Client authenticated: " + client.Client.RemoteEndPoint.ToString());
                 stream.WriteByte(1);
@@ -113,26 +113,26 @@ namespace ChatServer
 
                 lock (appClients)
                 {
-                    appClients[username] = client;
+                    appClients[username] = client;//add client to dictionary
                 }
-                addToListBox("Client with IP: " + client.Client.RemoteEndPoint.ToString() + " registered successfully with username " + username);
+                addToListBox("Client with IP: " + client.Client.RemoteEndPoint.ToString() + " registered successfully with username " + username);//notify server operator of connected client
 
-                //Broadcast that a new user has joined
-                BroadcastSystemMessage(username + " has joined the chat...");
+                //Broadcast to clients that a new user has joined
+                serverMessage(username + " has joined the chat...");
 
                 try
                 {
                     int NoBytesToRead = 0;
                     string messageToSend = "";
 
-                    while (true)
+                    while (true)//create loop to read messages
                     {
                         //Read the message from the client.
                         NoBytesToRead = stream.Read(streamBuffer, 0, streamBuffer.Length);
                         if (NoBytesToRead == 0) return;
                         string message = Encoding.UTF8.GetString(streamBuffer, 0, NoBytesToRead);
 
-                        if (message.ToLower() == "xxx") //If client want to exit the server.
+                        if (message.ToLower() == "xxx") //if client wants to exit the server.
                         {
 
                             string exitMessage = "Client with username " + username + " exiting the Chat Server...";
@@ -142,13 +142,13 @@ namespace ChatServer
                             message = "System note: " + username + " left the Chat...";
                             message = "Note: " + username + " left the Chat...";
 
-                            lock (appClients) //To ensure multiple actions on appClients.
+                            lock (appClients) //ensure multiple actions on appClients.
                             {
-                                appClients.Remove(username);
+                                appClients.Remove(username);//remove disconnected user
                             }
                         }
 
-                        if (message.StartsWith("@")) //If direct message, example: @Bob: Hello Bob!
+                        if (message.StartsWith("@")) //used to send direct message, example: @Bob: Hello Bob!
                         {
                             string intendedRecipient = "";
 
@@ -157,9 +157,9 @@ namespace ChatServer
                             intendedRecipient = message.Substring(1, indexOfDistinquisher - 1).Trim();
                             messageToSend = message.Substring(indexOfDistinquisher + 1).Trim();
 
-                            lock (appClients) //To ensure multiple actions on appClients.
+                            lock (appClients) //ensure multiple actions on appClients.
                             {
-                                if (appClients.ContainsKey(intendedRecipient)) //If intended recipient is on the server, only then a message may be send.
+                                if (appClients.ContainsKey(intendedRecipient)) //if intended recipient is on the server send message.
                                 {
                                     byte[] messageBufferToSend = Encoding.UTF8.GetBytes("DM received from " + username + ": " + messageToSend);
                                     TcpClient messageReceiver = appClients[intendedRecipient];
@@ -184,23 +184,23 @@ namespace ChatServer
                             byte[] messageBufferToSend = null;
                             if (message.StartsWith("Note:"))
                             {
-                                messageBufferToSend = Encoding.UTF8.GetBytes(message); //Convert the message to a byte array.
+                                messageBufferToSend = Encoding.UTF8.GetBytes(message); //convert the message to a byte array.
                             }
                             else
                             {
-                                messageBufferToSend = Encoding.UTF8.GetBytes(username + ": " + message); //Convert the message to a byte array.
+                                messageBufferToSend = Encoding.UTF8.GetBytes(username + ": " + message); //convert the message to a byte array.
                             }
 
-                            lock (appClients) //To ensure multiple actions on appClients.
+                            lock (appClients) //ensure multiple actions on appClients.
                             {
-                                for (int i = 0; i < appClients.Count; i++) //Traverse each client connected to the server.
+                                for (int i = 0; i < appClients.Count; i++) //traverse each client connected to the server.
                                 {
                                     TcpClient messageReceiver = appClients.Values.ElementAt(i);
                                     string receiverUsername = appClients.Keys.ElementAt(i);
 
                                     if (messageReceiver == client)
                                     {
-                                        continue; //Do not send own message to the sender.
+                                        continue; //do not send own message to the sender.
                                     }
                                     else
                                     {
@@ -215,26 +215,26 @@ namespace ChatServer
                                         }
                                     }
                                 }
-
+                                //Check if message is sent by the server, filters unnecessary server processes
                                 if (message.StartsWith("Note:"))
                                 {
 
                                 }
                                 else
                                 {
-                                    addToListBox("Message sent successfully from " + username + " to all connected users...");
+                                    addToListBox("Message sent successfully from " + username + " to all connected users...");//send client messages to all other users
                                 }
                             }
                         }
-
+                        //Check if message is sent by the server, filters unnecessary server processes
                         if (message.StartsWith("Note:"))
                         {
 
                         }
                         else
                         {
-                            //Display the message received from the client.
-                            addToListBox("Message '" + messageToSend + "' received from " + username);
+                            
+                            addToListBox("Message '" + messageToSend + "' received from " + username);//display the message received from the client.
                         }
                     }
                 }
@@ -245,7 +245,7 @@ namespace ChatServer
                 finally
                 {
                     //Remove connected client from the dictionary if it disconnects.
-                    lock (appClients) //To ensure multiple actions on appClients.
+                    lock (appClients) //ensure multiple actions on appClients.
                     {
                         if (appClients.ContainsKey(username)) appClients.Remove(username);
                     }
