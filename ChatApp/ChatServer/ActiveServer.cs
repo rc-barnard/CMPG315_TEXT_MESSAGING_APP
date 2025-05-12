@@ -25,9 +25,11 @@ namespace ChatServer
             InitializeComponent();
         }
 
-        public void addToListBox(string message)//update listbox when a new message is received
+
+        //Method to invoke add actions to the listbox to ensure proper functionioning accross multiple threads.
+        public void addToListBox(string message)
         {
-            if (lstServerActivity.InvokeRequired)
+            if (lstServerActivity.InvokeRequired) //check if the method is being called from a different thread
             {
                 lstServerActivity.Invoke((MethodInvoker)(() => lstServerActivity.Items.Add("")));
                 lstServerActivity.Invoke((MethodInvoker)(() => lstServerActivity.Items.Add(message)));
@@ -39,6 +41,8 @@ namespace ChatServer
             }
         }
 
+
+        //Method to start the server and listen for incoming connections.
         public void mainSeverOperations(int PORTNUMBER)
         {
             chatServer = new TcpListener(IPAddress.Any, PORTNUMBER);//create TCP object that listens on specified port and any ip address
@@ -46,17 +50,17 @@ namespace ChatServer
             addToListBox("Chat Server started on port: " + PORTNUMBER);
             while (isRunning)
             {
-                if (!chatServer.Pending())
+                if (!chatServer.Pending()) //If there is no pending client, sleep for 1 second to save CPU resources.
                 {
-                    Thread.Sleep(1000); // Sleep for 1 second if no client is pending to save cpu resources.
+                    Thread.Sleep(1000);
                     continue; // Continue to check for new clients.
                 }
 
-                try
+                try//Try catch statement to ensure proper exception handling.
                 {
                     TcpClient client = chatServer.AcceptTcpClient();//accept connection
                     addToListBox("Unknown client connected: " + client.Client.RemoteEndPoint.ToString());//show client connected
-                    Thread clientThread = new Thread(() => manageClient(client));
+                    Thread clientThread = new Thread(() => manageClient(client)); //Lambda expression to run the client management in a separate thread.
                     clientThread.Start();
                 }
                 catch (Exception error)
@@ -68,6 +72,7 @@ namespace ChatServer
             chatServer.Stop();
         }
 
+        //Method to send a system message to all connected clients.
         public void serverMessage(string message)
         {
             byte[] messageBufferToSend = Encoding.UTF8.GetBytes("SYSTEM: " + message);
@@ -76,7 +81,7 @@ namespace ChatServer
             {
                 foreach (var client in appClients.Values)//iterate through clients in dictionary
                 {
-                    try
+                    try//Try catch statement to ensure proper exception handling.
                     {
                         NetworkStream messageStream = client.GetStream();//get all the clients connection information
                         messageStream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
@@ -90,6 +95,7 @@ namespace ChatServer
             addToListBox("System note: " + message);//notify the server operator of changes
         }
 
+        //Method to manage the client connection and communication.
         public void manageClient(TcpClient client)
         {
             NetworkStream stream = client.GetStream();//get client networkstream to read/write data
@@ -119,12 +125,12 @@ namespace ChatServer
                 //Broadcast to clients that a new user has joined
                 serverMessage(username + " has joined the chat...");
 
-                try
+                try//Try catch statement to ensure proper exception handling.
                 {
                     int NoBytesToRead = 0;
                     string messageToSend = "";
 
-                    while (true)//create loop to read messages
+                    while (true)//create loop to read messages continously after registering username.
                     {
                         //Read the message from the client.
                         NoBytesToRead = stream.Read(streamBuffer, 0, streamBuffer.Length);
@@ -191,7 +197,7 @@ namespace ChatServer
 
                             lock (appClients) //ensure multiple actions on appClients.
                             {
-                                for (int i = 0; i < appClients.Count; i++) //traverse each client connected to the server.
+                                for (int i = 0; i < appClients.Count; i++) //traverse each client to send a group message.
                                 {
                                     TcpClient messageReceiver = appClients.Values.ElementAt(i);
                                     string receiverUsername = appClients.Keys.ElementAt(i);
@@ -202,7 +208,7 @@ namespace ChatServer
                                     }
                                     else
                                     {
-                                        try
+                                        try//Try catch statement to ensure proper exception handling.
                                         {
                                             NetworkStream messageStream = messageReceiver.GetStream();
                                             messageStream.Write(messageBufferToSend, 0, messageBufferToSend.Length);
@@ -245,7 +251,7 @@ namespace ChatServer
                         if (appClients.ContainsKey(username)) appClients.Remove(username);
                     }
 
-                    try
+                    try//Try catch statement to ensure proper exception handling.
                     {
                         stream.Close();
                     }
@@ -254,7 +260,7 @@ namespace ChatServer
                         addToListBox("An error occurred while closing the stream for client @" + username + ": " + error.Message);
                     }
 
-                    try
+                    try//Try catch statement to ensure proper exception handling.
                     {
                         client.Close();
                     }
@@ -268,25 +274,27 @@ namespace ChatServer
             }
             else
             {
+                //If the client fails to authenticate, close the connection and notify the server log.
                 addToListBox("Client authentication failed: " + client.Client.RemoteEndPoint.ToString());
-                try { stream.Close(); } catch { }
-                try { client.Close(); } catch { }
+                try { stream.Close(); } catch { }//Try catch statement to ensure proper exception handling.
+                try { client.Close(); } catch { }//Try catch statement to ensure proper exception handling.
                 return;
             }
         }
 
         private void ActiveServer_Load(object sender, EventArgs e)
         {
-            Thread serverThread = new Thread(() => Task.Run(() => mainSeverOperations(3258)));
+            //Create and start the server thread to run the main server operations.
+            Thread serverThread = new Thread(() => Task.Run(() => mainSeverOperations(3258))); //Lambda expression to run the server operations in a separate thread.
             serverThread.IsBackground = true;
             serverThread.Start();
         }
 
         private void btnStopServer_Click(object sender, EventArgs e)
         {
-            isRunning = false;
-            try { chatServer.Stop(); } catch { }
-            Environment.Exit(0);
+            isRunning = false; //stop the server if user wants to stop it.
+            try { chatServer.Stop(); } catch { } //Try catch statement to ensure proper exception handling.
+            Environment.Exit(0); //Close all threads and exit the application.
         }
     }
 }
