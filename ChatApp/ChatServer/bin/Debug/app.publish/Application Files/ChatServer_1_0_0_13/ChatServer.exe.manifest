@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="ChatServer.exe" version="1.0.0.13" publicKeyToken="ab4869ddddc29793" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="ChatServer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="ChatServer.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ChatServer.exe" size="54736">
+      <assemblyIdentity name="ChatServer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>aifvLixAlUnKc9dM8/amCxIbgQjFPlQJhQIkr9vnkvM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="ChatServer.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=RUAN_BARNARD\ruanb" issuerKeyHash="b8a7689d48fbd489e49309d67fa85321c858bf64" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>il7pCs+zIloKc+m1loB3n+nlrysSQ8gAh4EthxNS+1s=</DigestValue></Reference></SignedInfo><SignatureValue>I1Bm4oekw3tSYk85Ie8g9fInzTGiM60JvPycZK1QkJTQQoehYVmphqv21dtjKPHK8bQeRhuPcSPA48D3xJIHw2Pv0rHazgVVQH59cbAJHNx6gS6BJCvxJuUXfhMnPFohoEZ5HfE7SVu8MmZnN4WMiJ0+pTt+7shJie9uuXo3oJw=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>qO+srxaVryPR0jLTS71oJAbUliR3YRQ39Mu1EWQU+jFCZV/uWvi0zJMZ9ikpDf6Wb4CoGyOez6AL+hDEbJGsy++K4cJOVx1MuvUsjTuxD9N1NEZxmetpssuujrEvD4RZG4RkbXn4i2An7H1fXpEBpqbJS6wnp0mwMMWtiCCZPzE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="5bfb5213872d818700c843122bafe5e99f778096b5e9730a5a22b3cf0ae95e8a" Description="" Url=""><as:assemblyIdentity name="ChatServer.exe" version="1.0.0.13" publicKeyToken="ab4869ddddc29793" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=RUAN_BARNARD\ruanb</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>a9dw0vMKpcuV51KbIrufHFAJpldW1fRi8ZhNe1/VSpA=</DigestValue></Reference></SignedInfo><SignatureValue>Uqf+eFhVJp2wDxXi9f9NR6qm3HmzXxJLfM3BowXaoYFegdQzPn3eQqXDHhTSQvzARoEqOeB4SYDw8ONeHEuQ3rBiYCFNwxvmLtqR6VaNuAarYIAq9TmtwB5mi7yZ5Ctbmeu9XGrtSL/BD6nvrUP9SalJ51k5pjkzJRFNUonri6E=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>qO+srxaVryPR0jLTS71oJAbUliR3YRQ39Mu1EWQU+jFCZV/uWvi0zJMZ9ikpDf6Wb4CoGyOez6AL+hDEbJGsy++K4cJOVx1MuvUsjTuxD9N1NEZxmetpssuujrEvD4RZG4RkbXn4i2An7H1fXpEBpqbJS6wnp0mwMMWtiCCZPzE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB4TCCAUqgAwIBAgIQFDIWzAmwPL5DuZOBE4chlTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDHiQAUgBVAEEATgBfAEIAQQBSAE4AQQBSAEQAXAByAHUAYQBuAGIwHhcNMjUwNTEwMTIyMzMwWhcNMjYwNTEwMTgyMzMwWjAvMS0wKwYDVQQDHiQAUgBVAEEATgBfAEIAQQBSAE4AQQBSAEQAXAByAHUAYQBuAGIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKjvrK8Wla8j0dIy00u9aCQG1JYkd2EUN/TLtRFkFPoxQmVf7lr4tMyTGfYpKQ3+lm+AqBsjns+gC/oQxGyRrMvviuHCTlcdTLr1LI07sQ/TdTRGcZnrabLLro6xLw+EWRuEZG15+ItgJ+x9X16RAaamyUusJ6dJsDDFrYggmT8xAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAHYC7E37i3gvTfz35ZAnHBS1bzwq9VbLgW2R8iMDrMbyr+mvG1CInpHcobnQAQdn9mcNcOr2TZuVdq3mVy/4OjdcBKpDg0SbJr+4RaxhyU1tzOfRlIXLVeyZIFtOteU6F9NLFy4Ol0wc3Oy2I2Xn7plaf8IlTAI49CfAXJHC2D6A=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

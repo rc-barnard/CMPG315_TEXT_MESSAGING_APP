@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatScreen));
             this.IsDirectMessage = new System.Windows.Forms.CheckBox();
             this.lblRecipient = new System.Windows.Forms.Label();
             this.txtRecipient = new System.Windows.Forms.TextBox();
@@ -175,6 +176,7 @@
             this.Controls.Add(this.txtRecipient);
             this.Controls.Add(this.lblRecipient);
             this.Controls.Add(this.IsDirectMessage);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ChatScreen";
             this.Text = "Chat Screen";

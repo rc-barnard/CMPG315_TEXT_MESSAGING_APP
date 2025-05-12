@@ -24,9 +24,10 @@ namespace ChatServer
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Open the ActiveServer form when the button is clicked, to view server activity.
             ActiveServer myActiveServer = new ActiveServer();
             myActiveServer.Show();
-            this.Hide();
+            this.Hide(); //Hide the current form to show the next form.
         }
     }
 }
