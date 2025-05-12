@@ -144,7 +144,7 @@
             this.btnExitChat.Name = "btnExitChat";
             this.btnExitChat.Size = new System.Drawing.Size(119, 28);
             this.btnExitChat.TabIndex = 8;
-            this.btnExitChat.Text = "Exit Message";
+            this.btnExitChat.Text = "Exit Chat";
             this.btnExitChat.UseVisualStyleBackColor = false;
             this.btnExitChat.Click += new System.EventHandler(this.btnExitChat_Click);
             // 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -95,11 +95,10 @@ namespace ChatServer
             NetworkStream stream = client.GetStream();//get client networkstream to read/write data
             byte[] streamBuffer = new byte[1024];//create message buffer
 
-
             int noOfPasswordBytes = stream.Read(streamBuffer, 0, 12);//set password buffer(12 bytes)
-            string accessPassword = Encoding.ASCII.GetString(streamBuffer, 0, 12);
+            string accessPassword = Encoding.ASCII.GetString(streamBuffer, 0, noOfPasswordBytes);
 
-            if (noOfPasswordBytes != 0 & accessPassword == "CMPG@315PROJ")//authenticate password
+            if (noOfPasswordBytes != 0 && accessPassword == "CMPG@315PROJ")//authenticate password
             {
                 addToListBox("Client authenticated: " + client.Client.RemoteEndPoint.ToString());
                 stream.WriteByte(1);
@@ -134,13 +133,12 @@ namespace ChatServer
 
                         if (message.ToLower() == "xxx") //if client wants to exit the server.
                         {
-
                             string exitMessage = "Client with username " + username + " exiting the Chat Server...";
                             addToListBox(exitMessage);
                             byte[] exitMessageBuffer = Encoding.UTF8.GetBytes(exitMessage);
                             stream.Write(exitMessageBuffer, 0, exitMessageBuffer.Length);
                             message = "System note: " + username + " left the Chat...";
-                            message = "Note: " + username + " left the Chat...";
+                            message = "SYSTEM: " + username + " left the Chat...";
 
                             lock (appClients) //ensure multiple actions on appClients.
                             {
@@ -218,7 +216,6 @@ namespace ChatServer
                                 //Check if message is sent by the server, filters unnecessary server processes
                                 if (message.StartsWith("Note:"))
                                 {
-
                                 }
                                 else
                                 {
@@ -229,11 +226,9 @@ namespace ChatServer
                         //Check if message is sent by the server, filters unnecessary server processes
                         if (message.StartsWith("Note:"))
                         {
-
                         }
                         else
                         {
-                            
                             addToListBox("Message '" + messageToSend + "' received from " + username);//display the message received from the client.
                         }
                     }

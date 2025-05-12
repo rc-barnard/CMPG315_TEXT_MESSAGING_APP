@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6C341CF6-8146-4382-8260-188A6A9B9D62}|ChatServer\\ChatServer.csproj|C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\chatserver\\activeserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C341CF6-8146-4382-8260-188A6A9B9D62}|ChatServer\\ChatServer.csproj|solutionrelative:chatserver\\activeserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{63028AA9-FF54-464E-910C-4BA5D8020F54}|ChatApp\\ChatApp.csproj|C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\chatapp\\chatscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{63028AA9-FF54-464E-910C-4BA5D8020F54}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\chatscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{63028AA9-FF54-464E-910C-4BA5D8020F54}|ChatApp\\ChatApp.csproj|c:\\users\\ruanb\\onedrive\\desktop\\bsc_it\\year 2025\\semester_1\\5_cmpg315_computer_networks\\cmpg315_text_messaging_app\\chatapp\\chatapp\\chatscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{63028AA9-FF54-464E-910C-4BA5D8020F54}|ChatApp\\ChatApp.csproj|solutionrelative:chatapp\\chatscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C341CF6-8146-4382-8260-188A6A9B9D62}|ChatServer\\ChatServer.csproj|C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\chatserver\\activeserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C341CF6-8146-4382-8260-188A6A9B9D62}|ChatServer\\ChatServer.csproj|solutionrelative:chatserver\\activeserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6C341CF6-8146-4382-8260-188A6A9B9D62}|ChatServer\\ChatServer.csproj|C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\chatserver\\activeserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -54,20 +54,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ChatScreen.cs",
               "DocumentMoniker": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\ChatApp\\ChatScreen.cs",
               "RelativeDocumentMoniker": "ChatApp\\ChatScreen.cs",
               "ToolTip": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\ChatApp\\ChatScreen.cs",
               "RelativeToolTip": "ChatApp\\ChatScreen.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAASwIIAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAcwEwAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-10T10:38:05.234Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ChatScreen.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\ChatApp\\ChatScreen.cs",
+              "RelativeDocumentMoniker": "ChatApp\\ChatScreen.cs",
+              "ToolTip": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\ChatApp\\ChatScreen.cs [Design]",
+              "RelativeToolTip": "ChatApp\\ChatScreen.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-10T10:24:31.949Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -83,15 +95,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "ActiveServer.cs",
               "DocumentMoniker": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\ChatServer\\ActiveServer.cs",
               "RelativeDocumentMoniker": "ChatServer\\ActiveServer.cs",
               "ToolTip": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\ChatServer\\ActiveServer.cs",
               "RelativeToolTip": "ChatServer\\ActiveServer.cs",
-              "ViewState": "AgIAALgAAAAAAAAAAAAAAO4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAAAHkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T08:49:04.877Z"
+              "WhenOpened": "2025-05-10T08:49:04.877Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -102,18 +115,7 @@
               "ToolTip": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\ChatServer\\ActiveServer.cs [Design]",
               "RelativeToolTip": "ChatServer\\ActiveServer.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T08:44:51.504Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ChatScreen.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\ChatApp\\ChatScreen.cs",
-              "RelativeDocumentMoniker": "ChatApp\\ChatScreen.cs",
-              "ToolTip": "C:\\Users\\ruanb\\OneDrive\\Desktop\\Bsc_IT\\YEAR 2025\\SEMESTER_1\\5_CMPG315_COMPUTER_NETWORKS\\CMPG315_TEXT_MESSAGING_APP\\ChatApp\\ChatApp\\ChatScreen.cs [Design]",
-              "RelativeToolTip": "ChatApp\\ChatScreen.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-10T10:24:31.949Z",
+              "WhenOpened": "2025-05-10T08:44:51.504Z",
               "EditorCaption": " [Design]"
             },
             {
